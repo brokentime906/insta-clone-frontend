@@ -5,7 +5,8 @@ const FooterBlock = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 30px 100px;
+  height: 100px;
+  margin: 60px 100px;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 600;

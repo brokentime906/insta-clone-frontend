@@ -2,8 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
-import { Insta } from "../Components/Icons";
-import Post from "../Components/Post";
+import Post from "../Components/Post/";
 import Loader from "../Components/Loader";
 
 const PostWrapper = styled.div``;
@@ -22,8 +21,8 @@ const FEED = gql`
         id
         url
       }
-      # likeCount
-      # isLiked
+      likeCount
+      isLiked
       comment {
         id
         text
@@ -40,15 +39,13 @@ const FeedBlock = styled.div``;
 
 const Feed = () => {
   const { data, loading } = useQuery(FEED);
-  console.log(loading, data);
+  // console.log(loading, data);
   return (
     <FeedBlock>
       {loading && <Loader size={40} />}
       {!loading && (
         <PostWrapper>
-          {data.seeFeed.map(e => (
-            <Post {...e} />
-          ))}
+          {data.seeFeed && data.seeFeed.map(e => <Post {...e} id={e.id} />)}
         </PostWrapper>
       )}
     </FeedBlock>

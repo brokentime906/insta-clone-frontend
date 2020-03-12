@@ -6,6 +6,7 @@ import useInput from "../Hooks/useInput";
 import { Compass, HeartEmpty, User, Insta } from "./Icons";
 import { gql } from "apollo-boost";
 import { useQuery } from "react-apollo-hooks";
+import { ME } from "../SharedQuery";
 const HeaderBlock = styled.header`
   /* ${props => props.theme.whiteBox}; */
   border: 0;
@@ -54,20 +55,7 @@ const Header = ({ history }) => {
     history.push(`/search?term=${search.value}`);
     console.log("push !!");
   };
-  const ME = gql`
-    {
-      me {
-        name
-      }
-    }
-  `;
   const { data } = useQuery(ME);
-  //   const {
-  //     data: {
-  //       me: { name }
-  //     }
-  //   } = ME_Query;
-  // console.log(data.me);
   return (
     <HeaderBlock>
       <HeaderColumn>
